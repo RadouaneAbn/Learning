@@ -1,11 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
+    system("clear");
+    long int dis;
+    float ful;
     printf("Input total distance in km: ");
     scanf("%ld", &dis);
-    printf("Inpute total fuel spent in liters: ");
-    scanf("%ld", &ful);
+    printf("Input total fuel spent in liters: ");
+    scanf("%f", &ful);
 
-    printf("Average consumption (km/lt)")
+    float con = dis / ful;
+
+    printf("Average consumption (km/lt) %.3f\n", con);
 }
