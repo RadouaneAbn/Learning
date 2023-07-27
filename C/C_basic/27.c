@@ -4,6 +4,7 @@ int main()
 {
     int n, P = 0, N = 0;
     char* L[5] = {"first", "second", "third", "fourth", "fifth"};
+    // char L[5][20] = {"first", "second", "third", "fourth", "fifth"};
     
     for (int i = 0; i < 5; i++)
     {
