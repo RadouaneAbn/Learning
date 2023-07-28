@@ -10,7 +10,7 @@ int main()
     {
         if ((i % 2) == 0)
         {
-            printf("%i^%i = %i", );
+            printf("%i^%i = %i\n", i, i * i);
         }
     }
 }
