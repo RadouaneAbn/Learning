@@ -1,0 +1,15 @@
+sed replace a chosen word and replace it with another
+example
+i created i txt file named sedtest
+with this text inside of it
+     "The fly flies like no fly flies.
+     A fly is an insect that has wongs and a fly likes to eat leftovers."
+
+and i runed this command
+     sed 's/fly/grasshopper/g' sedtest.txt
+this command replaced every word 'fly' with 'grasshopper' in sedtest.txt
+
+another command like it is
+	 sed -i.ORIGINAL 's/fly/grasshopper/g' sedtest.txt
+this command replaced every word 'fly' with 'grasshopper' in sedtest.txt
+and created a backfile named sedtest.txt.ORIGINAL (or what ever you want) with the original text.

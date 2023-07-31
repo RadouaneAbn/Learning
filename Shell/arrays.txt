@@ -1,0 +1,23 @@
+if you run this in terminal
+    MY_FIRST_LIST=(one two three four five)
+
+and run
+    echo $MY_FIRST_LIST
+>>> one
+
+if you run
+    echo ${MY_FIRST_LIST[@]}
+>>> one two three four five # it will print the hole array
+
+if you run
+    echo ${MY_FIRST_LIST[0]}
+>>> one
+    echo ${MY_FIRST_LIST[3]}
+>>> four
+
+     for item in ${MY_FIRST_LIST[@]}; do echo -n $item | wc -c; done
+>>> 3
+>>> 3
+>>> 5
+>>> 4
+>>> 4
