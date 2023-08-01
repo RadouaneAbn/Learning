@@ -6,11 +6,11 @@ int main()
     printf("Input a number(Greater than 1): ");
     scanf("%i", &N);
 
-    for (int i = 1; i < N; i++)
+    for (int i = 1; i <= N; i++)
     {
         if ((i % 2) == 0)
         {
-            printf("%i^%i = %i\n", i, i * i);
+            printf("%i^2 = %i\n", i, i * i);
         }
     }
 }
