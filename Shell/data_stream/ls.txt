@@ -1,0 +1,4 @@
+access.log
+linux.txt
+ls.txt
+output

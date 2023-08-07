@@ -1,0 +1,10 @@
+systemd-resolve /usr/sbin/nologin
+messagebus /usr/sbin/nologin
+systemd-timesync /usr/sbin/nologin
+syslog /usr/sbin/nologin
+_apt /usr/sbin/nologin
+uuidd /usr/sbin/nologin
+tcpdump /usr/sbin/nologin
+radouane /bin/zsh
+red /bin/bash
+sshd /usr/sbin/nologin
