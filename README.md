@@ -1,21 +1,21 @@
 # This is a repo for printf project
 
-## collaborators
+## collaborators:
 
 	* Radouane Abounouas
 	* Errafai Achraf
 
-### info
+### info:
 
-&emsp;**This a project made by ALX-SE.**
-&emsp;this project is a collaboration between [radouane abounouas](https://github.com/RadouaneAbn) and [errafai achraf](https://github.com/Errafai)
-&emsp;and in it we made our own **printf** with variety of conversion specifiers like "%s, %d, %x and more".
+&emsp;**This a project made by ALX-SE.**  
+&emsp;this project is a collaboration between [radouane abounouas](https://github.com/RadouaneAbn) and [errafai achraf](https://github.com/Errafai).  
+&emsp;and in it we made our own **printf** with variety of conversion specifiers like "%s, %d, %x and more".  
 
-### Requirements
+### Requirements:
 
-&emsp;General
-&emsp;Allowed editors: vi, vim, emacs
-&emsp;All your files will be compiled on Ubuntu 20.04 LTS using `gcc`, using the options `-Wall -Werror -Wextra -pedantic -std=gnu89`
+&emsp;General:  
+&emsp;Allowed editors: vi, vim, emacs.  
+&emsp;All your files will be compiled on Ubuntu 20.04 LTS using `gcc`, using the options `-Wall -Werror -Wextra -pedantic -std=gnu89`.  
 &emsp;All your files should end with a new line
 &emsp;A README.md file, at the root of the folder of the project is mandatory
 &emsp;Your code should use the Betty style. It will be checked using `betty-style.pl` and `betty-doc.pl`
