@@ -1,13 +1,13 @@
 # This is a repo for printf project
 
 ## collaborators:
-&emsp;&emsp;&emsp;	* Radouane Abounouas
-&emsp;&emsp;&emsp;	* Errafai Achraf
+&emsp;&emsp;&emsp;	* Radouane Abounouas  
+&emsp;&emsp;&emsp;	* Errafai Achraf  
 
 ### info:
-&emsp;**This a project made by ALX-SE.**  
-&emsp;this project is a collaboration between [radouane abounouas](https://github.com/RadouaneAbn) and [errafai achraf](https://github.com/Errafai).  
-&emsp;and in it we made our own **printf** with variety of conversion specifiers like "%s, %d, %x and more".  
+* **This a project made by ALX-SE.**  
+* this project is a collaboration between [radouane abounouas](https://github.com/RadouaneAbn) and [errafai achraf](https://github.com/Errafai).  
+* and in it we made our own **printf** with variety of conversion specifiers like "%s, %d, %x and more".  
 
 ### Requirements:
 
