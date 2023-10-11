@@ -30,22 +30,33 @@ int _atoi(char *s)
 }
 
 /**
- * strncmp - this function compares n bytes of two strings
- * @s1: the first string
- * @s2: the second string
- * Return: 0 if the if successed
- *	-1 if it failes
+ * _strcmp - compares two strings
+ * @s1: first string
+ * @s2: second string
+ * Return: the result of the compareson
  */
 
-int _strncmp(char *s1, char *s2, size_t n)
+int _strcmp(char *s1, char *s2)
 {
-	size_t i;
+	int i, j, max;
+	char *s3;
 
-	for (i = 0; i < n; i++)
+	if (_strlen(s1) <= _strlen(s2))
 	{
-		if (s1[i] != s2[i])
-			return (-1);
+		max = _strlen(s1);
+		s3 = s1;
 	}
+	else
+	{
+		max = _strlen(s2);
+		s3 = s2;
+	}
+	for (i = 0; i <= max && s3[i] != '\0'; i++)
+	{
+		j = s1[i] - s2[i];
 
-	return (0);
+		if (j != 0)
+			break;
+	}
+	return (j);
 }

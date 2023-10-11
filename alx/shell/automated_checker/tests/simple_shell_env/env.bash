@@ -91,6 +91,7 @@ function check_callback()
 	content=`$ECHO "$content" | $GREP -v -e "^LD_PRELOAD="`
 	content=`$ECHO "$content" | $GREP -v -e "^LD_LIBRARY_PATH="`
 	content=`$ECHO "$content" | $GREP -v -e "^_="`
+
 	$ECHO "$content" > $OUTPUTFILE
 
 	# Remove "_" environment variable from expected output

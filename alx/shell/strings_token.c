@@ -94,35 +94,35 @@ char *_strtok(char *input, const char *delimiter)
 	return (token);
 }
 
-char **line_tokenizing(char *line, char *delim)
+/**
+ * line_tokens - tokenizes an input
+ * @line: the input to tokenize
+ * @delim: the delimiter to consider
+ * Return: the new formated input
+ */
+char **line_tokens(char *line, char *delim)
 {
-	int count, i = 0;
-	char **toks;
-	char *tmp, *or_tmp;
+	int count, i;
+	char *A, *tmp;
+	char **tokens;
 
 	tmp = _strdup(line);
-	or_tmp = tmp;
 
 	tmp = _strtok(tmp, delim);
 	for (count = 1; tmp; count++)
 		tmp = _strtok(NULL, delim);
-	free(tmp);
-	toks = malloc(count * sizeof(char *));
-	if (toks == NULL)
-	{
-		perror("tokens malloc");
-		free(or_tmp), exit(1);
-	}
-	tmp = or_tmp;
-	tmp = _strtok(line, delim);
-	for (; tmp; i++)
-	{
-		toks[i] = _strdup(tmp);
-		tmp = _strtok(NULL, delim);
-	}
-	toks[i] = NULL;
 
-	free(tmp);
-	free(or_tmp);
-	return (toks);
+	tokens = malloc(count * sizeof(char *));
+	if (tokens == NULL)
+		perror("tokens malloc"), exit(1);
+
+	A = _strtok(line, delim);
+	for (i = 0; A; i++)
+	{
+		tokens[i] = _strdup(A);
+		A = _strtok(NULL, delim);
+	}
+	tokens[i] = NULL;
+
+	return (tokens);
 }

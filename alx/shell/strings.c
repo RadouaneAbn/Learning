@@ -78,7 +78,7 @@ char *_strcpy(char *dest, char *src)
 
 unsigned int _strcspn(char *s, char *reject)
 {
-	unsigned int i = 0, j = 0;
+	unsigned int i, j;
 
 	for (i = 0; s[i] != '\0'; i++)
 	{

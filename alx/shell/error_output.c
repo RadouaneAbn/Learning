@@ -42,7 +42,6 @@ void error_ret(char *err_msg, char *prg, unsigned int ncmd,
  * @ncmd: the count of successive cmds executed
  *	in the program
  * @cmd: the executed command
- * @tmp: temporary string
  */
 
 void error_exec(char *err_msg, char *prg, unsigned int ncmd,

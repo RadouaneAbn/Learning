@@ -9,31 +9,31 @@
  *      in the program
  * Return: EXIT_SUCCESS or -1
  */
-
 int check_exit(char *s, int *exit_code, char *prg, unsigned int ncmd)
 {
-	int T = 0, i = 0, /*j = 0*/ntmp = 0, sg = 0;
-	char *e = "exit", tmp[16], err_msg[256];
-/*
-	while (s[i] == ' ')
-		i++;
-*/
+	int T = 0, i = 0, ntmp = 0, sg = 0, len = _strlen(s);
+	char *e = "exit", tmp[16] = "", err_msg[256];
+
+	if (s[i] == '\0')
+		return (0);
+
 	for (; s[i] && i < 4; i++)
 	{
 		if (s[i] != e[i])
 			return (0);
 	}
 
-	while (s[i] == ' ')
-		i++;
-	if (s[i] == '\n' || s[i] == '\0')
+	if (s[i] == '\0')
 		return (-1);
+
 	if (s[i] == '-')
 	{
 		tmp[ntmp] = '-';
+		sg = -1;
 		ntmp++, i++;
 	}
-	while (s[i])
+	i++;
+	while (i <= len)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
 		{
@@ -41,10 +41,10 @@ int check_exit(char *s, int *exit_code, char *prg, unsigned int ncmd)
 			ntmp++;
 
 		}
-		else if (s[i] == '\n' || s[i] == '\0')
+		else if (s[i] == '\0')
 		{
 			tmp[ntmp] = '\0';
-			T = _atoi(tmp);
+			T = atoi(tmp);
 			if ((T >= 0 && T <= 2147483647) && sg == 0)
 				*exit_code = T;
 			else

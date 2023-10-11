@@ -106,6 +106,7 @@ function check_callback()
 	content=`$CAT "$EXPECTED_OUTPUTFILE"`
 	content=`$ECHO "$content" | $GREP -v -e "^_="`
 	content=`$ECHO "$content" | $GREP -v -e "^PWD="`
+
 	$ECHO "$content" > $EXPECTED_OUTPUTFILE
 
 	$ECHO -n "" > $EXPECTED_ERROR_OUTPUTFILE
