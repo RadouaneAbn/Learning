@@ -1,0 +1,16 @@
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * main - check the code
+ *
+ * Return: Always EXIT_SUCCESS.
+ */
+int main(void)
+{
+    char *str = "Hellow world!!";
+
+    printf("%d\n", _strlen("My Dyn Lib"));
+    _puts(str);
+    return (0);
+}
