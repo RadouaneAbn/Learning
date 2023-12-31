@@ -1,0 +1,56 @@
+#!/bin/bash
+
+BK='\033[0;30m'
+RD='\033[0;31m'
+LRD='\033[1;31m'
+GR='\033[1;32m'
+YL='\033[0;33m'
+DYL='\033[2;33m'
+BL='\033[1;34m'
+MG='\033[0;35m'
+CR='\033[0;35m'
+WT='\033[0;37m'
+
+xrandr_output=$(xrandr 2>&1)
+xrandr_exit_status=$?
+if [ $xrandr_exit_status -eq 0 ]; then
+    resolution=$(echo "$xrandr_output" | awk '/\*/ {print $1}')
+else
+    resolution="resolution unavailable"
+fi
+
+user=$(whoami)
+hostname=$(hostname)
+os=$(cat /etc/os-release | grep PRETTY_NAME | cut -d'=' -f2- | tr -d '"')
+kernel=$(uname -r)
+uptime=$(uptime -p)
+packages=$(dpkg -l | grep -c '^ii')
+shell=$(basename "$SHELL")
+gtk_theme=$(gsettings get org.gnome.desktop.interface gtk-theme | tr -d "'")
+disk=$(df -h | grep /dev/sdc | awk '{print $3 " used out of " $2}')
+cpu=$(lscpu | grep "Model name:" | cut -d':' -f2 | sed -e 's/^[[:space:]]*//')
+ram=$(free -h | grep Mem | awk '{print $3 " used out of " $2}')
+
+echo ""
+echo -ne "                          ${RD} ./+o+- ${WT}         " && echo -e "${GR}$user@$hostname${WT}"
+echo -ne "                   yyyyy- ${RD}-yyyyyy+ ${WT}        " && echo -e "${GR}OS:${WT} $os"
+echo -ne "                ${WT}://+//////-${RD}yyyyyyo ${WT}        " && echo -e "${GR}Kernel:${WT} $kernel"
+echo -ne "            ${YL}.++ ${WT}.:/++++++/-.${RD}+sss/\`${WT}         " && echo -e "${GR}Uptime:${WT} $uptime"
+echo -ne "          ${YL}.:++o: ${WT} /++++++++/:--:/-         " && echo -e "${GR}Packages:${WT} $packages"
+echo -ne "        ${YL}o:+o+:++${WT}.\`..\`\`\`.-/oo+++++/         " && echo -e "${GR}Shell:${WT} $shell"
+echo -ne "        ${YL}.:+o:+o/.${WT}          \`+sssoo+/       " && echo -e "${GR}Resolution:${WT} $resolution"
+echo -ne "   .++/+:${YL}+oo+o:\`${WT}             /sssooo.      " && echo -e "${GR}GTK Theme:${WT} $gtk_theme"
+echo -ne "  /+++//+:${YL}\`oo+o${WT}               /::--:.      " && echo -e "${GR}Disk:${WT} $disk"
+echo -ne "  \\+/+o+++${YL}\`o++o               ${RD}++////.${WT}      " && echo -e "${GR}CPU:${WT} $cpu"
+echo -ne "   .++.o+${YL}++oo+:\`             ${RD}/dddhhh.${WT}      " && echo -e "${GR}RAM:${WT} $ram"
+echo -e "        ${YL}.+.o+oo:.          ${RD}\`oddhhhh+${WT}       "
+echo -e "         ${YL}\+.++o+o${RD}\`\`-\`\`\`\`.:ohdhhhhh+${WT}        ${BL}##########################################${WT}"
+echo -e "          ${YL}\`:o+++ ${RD}\`ohhhhhhhhyo++os:${WT}         ${BL}#   ${LRD} ____          _                     ${BL}#${WT}"
+echo -e "            ${YL}.o:${RD}\`.syhhhhhhh/${YL}.oo++o\`${WT}         ${BL}#   ${LRD}|  _ \\ ___  __| | ${DYL}___ ____  _   _   ${WT} ${BL}#${WT}"
+echo -e "                ${RD}/osyyyyyyo${YL}++ooo+++/${WT}        ${BL}#   ${LRD}| |_) / _ \\/ _\` ${DYL}/ ___/ ___|| | | |   ${WT}${BL}#${WT}"
+echo -e "                    ${RD}\`\`\`\`\` ${YL}+oo+++o\\:${WT}        ${BL}#   ${LRD}|  _ <  __/ (_| ${DYL}\\___ \\___ \\| |_| |  ${WT}${BL} #${WT}"
+echo -e "                           ${YL}\`oo++. ${WT}         ${BL}#   ${LRD}|_| \\_\\___|\\__,_|${DYL}___) |__) |  _  |   ${WT}${BL}#${WT}"
+echo -e "                                           ${BL}#   ${LRD}|_______________${DYL}_____/____/|_| |_|  ${WT}${BL} #${WT}"
+echo -e "                                           ${BL}#                                        ${BL}#${WT}"
+echo -e "                                           ${BL}##########################################${WT}"
+echo ""

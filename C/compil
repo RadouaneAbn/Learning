@@ -1,0 +1,71 @@
+#!/bin/bash
+
+header_file=()              # header file
+dir=()                      # task file name
+functions=()                # the functions to be tested 
+mains=()                    # the test files
+missing=()                  # missing files from working directory
+file_number=0               # keep count for {0, 1, 2, ...}-main.c
+file_pattern='*[0-9]*-main.c'
+
+for arg in "$@"; do
+    if [ -e "$arg" ]; then
+        functions+=("$arg") # add file_name to function if it exists in WD
+    else
+        missing+=("$arg")   # add file_name to missing if not
+    fi
+done
+
+# checkes there is not missing files
+
+if [ ${#missing[@]} -ne 0 ]; then
+    for file in ${missing[@]}; do
+        echo "$file is missing}"
+    done
+    exit 1
+fi
+
+dir="${functions[0]%.*}"    # set the dir variable to the name of the main function with no extention
+
+# make sure the test files exist and put the in mains in order
+file_count=$(find test/$dir -name "$file_pattern" | wc -l)
+
+if [[ $file_count -lt 0 ]]; then        
+    echo "files could not be found"
+    exit 1
+fi
+
+mains=$(find test/$dir -name "*-main.c" | sort -n)
+
+# make sure the header file exists in current directory
+header_file=$(find . -maxdepth 1 -type f -name "*.h")
+if [ -z $header_file ]; then
+    echo "header file missing"
+    exit 1
+fi
+
+# if no errors >> create a directory named .tmp_ALX and copy the header and the mains and the functions to it
+mkdir .tmp_ALX 2>/dev/null
+cp $header_file .tmp_ALX/
+cp ${functions[@]} .tmp_ALX/
+cp ${mains[@]} .tmp_ALX/
+
+# create an output file or rewrite an existing one
+touch output.txt
+echo "this is tests for ${functions[@]}" > output.txt
+echo ""
+
+# append to the output file the stdout or stderr of the compiled file of everything
+while [ -e .tmp_ALX/$file_number-main.c ]; do   # check if {0, 1, 2, ...}-main.c exists | so that it will stop when a num-main.c does not exist
+    echo "test $file_number:" >> output.txt
+    echo "" >> output.txt
+    gcc -Wall -pedantic -Werror -Wextra -std=gnu89 .tmp_ALX/${functions[@]} .tmp_ALX/$file_number-main.c 2>> output.txt
+    ./a.out 2>&1 >> output.txt
+    echo "" >> output.txt
+    echo "###########################################################" >> output.txt
+    ((file_number++))
+done
+
+# clean the mess and less to the output
+rm -rf .tmp_ALX/ ./a.out
+less output.txt
